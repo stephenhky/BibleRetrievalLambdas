@@ -38,7 +38,7 @@ def lambda_handler(event, context):
     featurestore_basename = os.path.basename(featurestore_path)
     docker_featurestore_path = os.path.join('/', 'tmp', featurestore_basename)
     s3 = boto3.resource('s3')
-    s3.meta.client.download(s3_bucket, featurestore_path, docker_featurestore_path)
+    s3.meta.client.download_file(s3_bucket, featurestore_path, docker_featurestore_path)
 
     # initialize object
     featurestore_retriever = BibleChapterH5FeatureStoreRetriever(docker_featurestore_path)
@@ -47,5 +47,6 @@ def lambda_handler(event, context):
     # return
     return {
         'statusCode': 200,
+        # 'body': query,
         'embedding': embedding
     }
