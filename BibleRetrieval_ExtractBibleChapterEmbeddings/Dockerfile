@@ -23,5 +23,5 @@ RUN pip install -U git+https://github.com/stephenhky/PyBibleNLP3
 RUN pip install -r requirements.txt
 RUN pip install awslambdaric boto3
 
-ENTRYPOINT [ "/usr/local/bin/python", "-m", "awslambdaric" ]
+ENTRYPOINT [ "python", "-m", "awslambdaric" ]
 CMD [ "lambda_function.lambda_handler" ]
