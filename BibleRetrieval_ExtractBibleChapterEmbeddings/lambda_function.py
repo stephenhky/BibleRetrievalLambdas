@@ -43,10 +43,11 @@ def lambda_handler(event, context):
     # initialize object
     featurestore_retriever = BibleChapterH5FeatureStoreRetriever(docker_featurestore_path)
     embedding = featurestore_retriever.extract_embedding(bookid, chapter)
+    embedding = embedding[0]
 
     # return
     return {
         'statusCode': 200,
         # 'body': query,
-        'embedding': embedding
+        'embedding': json.dumps(list(embedding))
     }
