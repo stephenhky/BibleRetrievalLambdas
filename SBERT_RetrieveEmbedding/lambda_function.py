@@ -26,7 +26,7 @@ def lambda_handler(event, context):
     # loading SentenceBERT model
     model = SentenceTransformer(docker_model_path)
     embedding = model.encode([text])
-    embedding = embedding[0]c
+    embedding = embedding[0]
 
     # return
     return {
