@@ -1,5 +1,6 @@
 
 import json
+import os
 
 from sentence_transformers import SentenceTransformer
 
@@ -11,7 +12,7 @@ def lambda_handler(event, context):
     sbertmodel = query['sbertmodel']
 
     # loading SentenceBERT model
-    model = SentenceTransformer(sbertmodel)
+    model = SentenceTransformer(os.path.join('/', 'models', sbertmodel))
     embedding = model.encode([text])
     embedding = embedding[0]
 
